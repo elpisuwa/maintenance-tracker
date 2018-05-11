@@ -1,5 +1,5 @@
 window.onload = function(){ 
-    var requestModal = document.getElementById('myModal');
+    var requestModal = document.getElementById('myreqModal');
 var btn2 = document.getElementById("requestModal");
 var span = document.getElementsByClassName("close")[0];
 if (btn2!==""){
@@ -12,11 +12,11 @@ span.onclick = function() {
 
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("signupModal");
-var span = document.getElementsByClassName("close")[0];
+var spanx = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
     modal.style.display = "inline-block";
 }
-span.onclick = function() {
+spanx.onclick = function() {
     modal.style.display = "none";
 };
 
