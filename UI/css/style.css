@@ -62,25 +62,7 @@ a:hover{
 nav{
   display: block;
 }
-  /*.table {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
-    background-color: transparent;
-  }
-
-  .table th,
-  .table td {
-    padding: 1rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-  }
-
-  .table thead th {
-    vertical-align: bottom;
-    border-bottom: 3px solid #dee2e6;
-  }*/
+  
 
   table {
         border-collapse: collapse;
@@ -726,7 +708,7 @@ font-weight: bold;
   height: 100%;
   width: 180px;
   z-index: 1;
-background-color: #efebeb;
+  background-color: #efebeb;
   
  }
 
