@@ -62,7 +62,7 @@
 				<div class="row login-form" >
 					<h3 class="white-text">Login</h3>
 				  <div class="col12">
-					<form action="/action_page.php" >
+					<form  >
 					  
 						
 					  <div class="">
@@ -78,7 +78,7 @@
 					    <input class="input-field" type="password" placeholder="Password" name="psw">
 					  </div>
 					        
-					    <button type="submit" class=" blue-btn round-button loginbtn">Login</button>
+					    <button type="submit" class=" blue-btn round-button loginbtn"><a href="user-page.html">Login</a></button>
 					    
 					  </div>
 
@@ -101,7 +101,7 @@
 				  <div class="modal-content">
 				    <span class="close">&times;</span>
 				    <div class="modal__signup-form row">
-					    <form action="/action_page.php " >
+					    <form  " >
 						  
 							
 						  <div class="">
@@ -133,4 +133,17 @@
 	
 </body>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+ window.onload = function(){ 
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("signupModal");
+    var spanx = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "inline-block";
+    }
+    spanx.onclick = function() {
+        modal.style.display = "none";
+    };
+ }
+</script>
 </html>

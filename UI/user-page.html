@@ -22,7 +22,7 @@
   	<main class="mbottom-3" >
   		<div class="banner"  >
         
-        <button class="centered blue-btn-inv round-button button-lg" id="requestModal">Make a Request</button>
+        <button class="centered blue-btn-inv round-button button-lg" id="requestModal"><a href="admin-dashboard.html">Make a Request</a></button>
         
       </div>
       <div id="myreqModal" class="modal">
@@ -31,7 +31,7 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <div class="modal__request-form row">
-              <form action="/action_page.php " >
+              <form  >
               
               
               <div class="mbottom-3">
@@ -72,7 +72,7 @@
             <div class="row">
              <div class="col4 col-s">
                 <p class="sm-show-only">Request</p>
-                Laptop battery
+                Car battery
               </div>
               <div class="col4 col-s">
                 <p class="sm-show-only">Nature of Request</p>
@@ -89,11 +89,11 @@
             <div class="row">
              <div class="col4 col-s ">
                 <p class="sm-show-only">Request</p>
-                Faulty Screen
+                Wind Screen
               </div>
               <div class="col4 col-s">
                 <p class="sm-show-only">Nature of Request</p>
-                Maintenance
+                Repair
               </div>
               <div class="col4 col-s success-text">
                 <p class="sm-show-only ">Status</p>
@@ -106,11 +106,11 @@
             <div class="row">
              <div class="col4 col-s">
                 <p class="sm-show-only">Request</p>
-                Unable to turn on system
+                Unable to turn on engine
               </div>
               <div class="col4 col-s">
                 <p class="sm-show-only">Nature of Request</p>
-                Maintenance
+                Repair
               </div>
               <div class="col4 col-s success-text">
                 <p class="sm-show-only ">Status</p>
@@ -135,4 +135,19 @@
 
   </body>
   <script type="text/javascript" src="js/script.js" defer></script>
+  <script type="text/javascript">
+    window.onload = function(){
+    var requestModal = document.getElementById('myreqModal');
+    var btn2 = document.getElementById("requestModal");
+    var span = document.getElementsByClassName("close")[0];
+    if (btn2!==""){
+    btn2.onclick = function() {
+        requestModal.style.display = "inline-block";
+    }               
+    span.onclick = function() {
+        requestModal.style.display = "none";
+    }}
+  }
+  </script>
+  
 </html>

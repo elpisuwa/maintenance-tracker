@@ -450,7 +450,7 @@ font-size: 50px;
 
 }
 
-input[type=text], input[type=password], .user-select, textarea {
+input[type=text], input[type=password], input[type=email], .user-select, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -461,10 +461,12 @@ input[type=text], input[type=password], .user-select, textarea {
 
 
 .loginbtn{
+  font-size: 20px;
+  font-weight: bold;
   float: center;
   margin: 8px 0;
   width: 50%;
-  height:30px;
+  height:40px;
   
 
 }
