@@ -24,6 +24,7 @@
 	  </a>
 	</nav> -->
 	<header class="bg__light-black" >
+      <span>Howdy Hope</span>
       <a href="" class="header__sign-out white-text"><h4>Sign Out</h4></a>
       <img class="header__logo" src="img/logo.png">
     </header>
@@ -46,8 +47,46 @@
   	<main class="admin-main ptop-3 black-text">
   		<h1 class="black-text">Dashboard</h1>
   		<div class="info-card"> info</div>
+      <div class="row">
+        
+          <div class="col4 filter">
+            <form>
+          <h3 class="black-text mtop-0">By Time</h3>
+            <select class="filter-select">
+              <option>Filter Table</option>
+              <option>Repair</option>
+              <option>Rejected</option>
+              <option>Resolved</option>
+            </select>
+            </form>
+          </div>
+          <div class="col4 filter">
+            <form>
+           <h3 class="black-text mtop-0">By Request Type</h3>
+            <select class="filter-select">
+              <option>Filter Table</option>
+              <option>Repair</option>
+              <option>Rejected</option>
+              <option>Resolved</option>
+            </select>
+            </form>
+          </div>
+          <div class="col4 filter">
+            <form>
+              <h3 class="black-text mtop-0">Request Status</h3>
+            <select class="filter-select">
+              <option>Filter Table</option>
+              <option>Repair</option>
+              <option>Rejected</option>
+              <option>Resolved</option>
+            </select>
+            </form>
+          </div>
+        
+
+      </div>
   		<div class="container black-text white">
-  			<div class="row">
+  			<!-- <div class="row">
   				<table>
   					<thead class="table">
 		              <tr>
@@ -75,7 +114,42 @@
                     </tbody>
   					
   				</table>
-  			</div>
+  			</div> -->
+        <div style="overflow-x:auto;">
+          <table>
+            <tr>
+              <th>Date</th>
+              <th>User</th>
+              <th>Request Type</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Actions</th>
+              
+            </tr>
+            <tr>
+              <td>21-21-12</td>
+              <td>Smith</td>
+              <td>Repair</td>
+              <td>Broken Screen</td>
+              <td>none</td>
+              <td><i class="fa fa-calendar-check-o"></i>
+                  <i class="fa fa-times-o"></i>
+                  <i class="fa fa-calendar-check-o"></i>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>Eve</td>
+              <td>Jackson</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              
+            </tr>
+            
+          </table>
+        </div>
   			
   			
   		</div>
@@ -86,7 +160,8 @@
 		&copy; Cycle 32
 	</footer>
     
-	<script type="text/javascript" src="js/script.js"></script>
+	
 
   </body>
+  <script type="text/javascript" src="js/script.js"></script>
 </html>
