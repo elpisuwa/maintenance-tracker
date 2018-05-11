@@ -24,8 +24,8 @@
 	  </a>
 	</nav> -->
 	<header class="bg__light-black" >
-      <span>Howdy Hope</span>
-      <a href="" class="header__sign-out white-text"><h4>Sign Out</h4></a>
+      <span class="header__user" >Hi Hope Uwa</span>
+      <a href="" class="header__sign-out white-text"><i class="fa fa-caret-down"></i></a>
       <img class="header__logo" src="img/logo.png">
     </header>
 
@@ -47,10 +47,11 @@
   	<main class="admin-main ptop-3 black-text">
   		<h1 class="black-text">Dashboard</h1>
   		<div class="info-card"> info</div>
+      <div class="container">
       <div class="row">
         
-          <div class="col4 filter">
-            <form>
+          <div class="col3 col-s filter">
+            <form class="filter-form">
           <h3 class="black-text mtop-0">By Time</h3>
             <select class="filter-select">
               <option>Filter Table</option>
@@ -60,8 +61,8 @@
             </select>
             </form>
           </div>
-          <div class="col4 filter">
-            <form>
+          <div class="col3 col-s filter">
+            <form class="filter-form">
            <h3 class="black-text mtop-0">By Request Type</h3>
             <select class="filter-select">
               <option>Filter Table</option>
@@ -71,8 +72,8 @@
             </select>
             </form>
           </div>
-          <div class="col4 filter">
-            <form>
+          <div class="col3 col-s filter">
+            <form class="filter-form">
               <h3 class="black-text mtop-0">Request Status</h3>
             <select class="filter-select">
               <option>Filter Table</option>
@@ -82,8 +83,17 @@
             </select>
             </form>
           </div>
+          <div class="col3 col-s">
+            <ul class="black-text">
+              <li><i class="myh5 success-text fa fa-calendar-check-o"></i> -Resolved</li>
+              <li><i class="myh5 success-text fa fa-check"></i> -Approved</li>
+              <li><i class="myh5 cancel-text fa fa-close"></i> -Declined</li>
+
+            </ul>
+          </div>
         
 
+      </div>
       </div>
   		<div class="container black-text white">
   			<!-- <div class="row">
@@ -124,6 +134,7 @@
               <th>Description</th>
               <th>Status</th>
               <th>Actions</th>
+              <th>Resolve
               
             </tr>
             <tr>
@@ -132,21 +143,40 @@
               <td>Repair</td>
               <td>Broken Screen</td>
               <td>none</td>
-              <td><i class="fa fa-calendar-check-o"></i>
-                  <i class="fa fa-times-o"></i>
-                  <i class="fa fa-calendar-check-o"></i>
+              <td><i class=" status-icon  fa fa-check"></i>
+                  <i class="status-icon cancel-text fa fa-close"></i>
+                  
               </td>
+              <td><i class="status-icon  fa fa-calendar-check-o"></i></td>
               
             </tr>
             <tr>
-              <td>Eve</td>
-              <td>Jackson</td>
-              <td>94</td>
-              <td>94</td>
-              <td>94</td>
-              <td>94</td>
+              <td>21-21-12</td>
+              <td>Smith</td>
+              <td>Repair</td>
+              <td>Broken Screen</td>
+              <td>none</td>
+              <td><i class=" status-icon success-text fa fa-check"><a href=""></a></i>
+                  <i class="status-icon c fa fa-close"></i>
+                  
+              </td>
+              <td><i class="status-icon success-text fa fa-calendar-check-o"></i></td>
               
             </tr>
+            <tr>
+              <td>21-21-12</td>
+              <td>Smith</td>
+              <td>Repair</td>
+              <td>Broken Screen</td>
+              <td>none</td>
+              <td><i class=" status-icon success-text fa fa-check"></i>
+                  <i class="status-icon  fa fa-close"></i>
+                  
+              </td>
+              <td><i class="status-icon  fa fa-calendar-check-o"></i></td>
+              
+            </tr>
+            
             
           </table>
         </div>
