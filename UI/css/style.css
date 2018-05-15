@@ -500,38 +500,8 @@ input[type=text], input[type=password], input[type=email], .user-select, textare
 .table{
   background-color: transparent;
 }
-/*fade in*/
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn 1s infinite;
-  animation: fadeIn 1s infinite; }
-
-@-webkit-keyframes fadeOut {
-  from {
-    opacity: 1; }
-  to {
-    opacity: 0; } }
-
-@keyframes fadeOut {
-  from {
-    opacity: 1; }
-  to {
-    opacity: 0; } }
-
-.fadeOut {
-  -webkit-animation-name: fadeOut 1s infinite;
-  animation: fadeOut 1s infinite; }
 
 .arrow {
     
