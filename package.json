@@ -1,0 +1,44 @@
+{
+  "name": "maintenance-tracker",
+  "version": "1.0.0",
+  "description": "A web app that helps users make request for repairs and maintenance",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --exec npm run babel-node -- ./app.js",
+    "test": "export NODE_PATH=./ --compilers js:babel-register --recursive",
+    "lint-all": "eslint app.js test/*",
+    "babel-node": "babel-node --presets=latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uwahope007/maintenance-tracker.git"
+  },
+  "author": "Uwa hope\u001b[D\u001b[D\u001b[D\u001b[D\u001b[H",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uwahope007/maintenance-tracker/issues"
+  },
+  "homepage": "https://github.com/uwahope007/maintenance-tracker#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.4"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0"
+  }
+}
