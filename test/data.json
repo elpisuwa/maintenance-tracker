@@ -1,0 +1,14 @@
+{
+    "users" : [
+        {"id":1, "name":"Hope Uwa"},
+        {"id":2, "name":"Victoria Uwa"}
+    ],
+    "admin" : [
+        {"id":1, "name":"Charles Brown" }
+    ],
+    "requests" : [
+        {"id":1, "type":"repair", "description" : "broken side mirror"},
+        {"id":2, "type":"maintenance", "description":"brake pad"},
+        {"id":3, "type":"repair", "description":"gear system is stiff"}
+    ]
+}
