@@ -16,7 +16,7 @@ class RequestController{
 			data[searchRequest].requestType = request.body.requestType;
 			data[searchRequest].description = request.body.requestDescription;
 
-			return response.status(200).json({message:'Request has been successfully updated', request: data.searchRequest})
+			return response.status(200).json({message:'Request has been successfully updated', request: data})
 		
 
 	}
