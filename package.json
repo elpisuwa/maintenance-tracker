@@ -5,8 +5,8 @@
   "main": "./server/app.js",
   "scripts": {
     "start": "nodemon --exec npm run babel-node -- ./server/app.js",
-    "test": "export NODE_PATH=./ --compilers js:babel-register --recursive",
-    "lint-all": "eslint ./server/app.js test/*",
+    "test": "mocha --compilers js:babel-register server/tests/*.js --exit",
+    "lint-all": "eslint ./server/app.js server/tests/*",
     "babel-node": "babel-node --presets=latest"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "babel": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "body-parser": "^1.18.3",
+    "chai-http": "^4.0.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "method-override": "^2.3.10",
