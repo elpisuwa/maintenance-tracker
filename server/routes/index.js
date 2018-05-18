@@ -1,4 +1,4 @@
-import requestController from '../../controller/requestController';
+import requestController from '../controller/requestController';
 
 const routes =(app)=>{
 	app.get('/', (req,res)=>{

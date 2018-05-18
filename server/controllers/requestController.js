@@ -1,6 +1,6 @@
-import data from '../data';
+import data from '../data/request.json';
 
-userRequest = data.requests;
+
 
 class RequestController{
 
