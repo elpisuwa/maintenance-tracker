@@ -6,5 +6,6 @@ const routes =(app)=>{
 	});
 	app.get('/api/v1/users/requests',requestController.allRequest);
 	
+}
 
 export default routes;
