@@ -8,23 +8,18 @@ class RequestController{
 		const {requestType,requestDescription} = request.body;
 
 
-		const searchRequest = data.findIndex((userRequest)=>
+		const findRequestId = data.findIndex((userRequest)=>
 			userRequest.id === parseInt(request.params.requestId, 10)
 		);
 
 		
-			data[searchRequest].requestType = request.body.requestType;
-			data[searchRequest].description = request.body.requestDescription;
+		data[findRequestId].requestType = request.body.requestType;
+		data[findRequestId].requestDescription = request.body.requestDescription;
 
-			return response.status(200).json({message:'Request has been successfully updated', request: data})
-		
+		return response.status(200).json({message:'Request has been successfully updated', request: data[findRequestId]})
+	
 
 	}
-
-
-
-
-
 
 
 }
