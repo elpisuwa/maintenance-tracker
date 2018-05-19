@@ -12,7 +12,7 @@ describe('GET all request endpoint', ()=>{
      .get('/api/v1/users/requests')
      .end((error, response)=>{
      	expect(response.status).to.equal(200);
-     	expect(response.body).to.be.an('array');
+     	expect(response.body).to.be.an('object');
      	
      	done();
      });
