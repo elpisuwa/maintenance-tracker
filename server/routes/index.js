@@ -5,7 +5,7 @@ const routes =(app)=>{
 		res.status(200).send('Welcome to Maintenance Tracker');
 	});
 	
-	app.put('/api/v1/users/requests/:requestId', requestController.updateRequest);
+	app.get('/api/v1/users/requests/:requestId', requestController.viewRequest);
 }
 
 export default routes;
