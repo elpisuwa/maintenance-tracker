@@ -9,7 +9,7 @@ class RequestController{
   	 const id = data[data.length-1].id+1;
   	 const newRequest = {id, userId,model,requestType,requestDescription};
   	  
-  	 if(userId!=="" && model !=="" requestType !== "" && requestDescription !== ""){ 
+  	 if(userId!=="" && model !=="" &&requestType !== "" && requestDescription !== ""){ 
 	  	 data.push(newRequest);
 
 	  	 return response.status(201).json({request: data, message: 'Request has been added successfully'});

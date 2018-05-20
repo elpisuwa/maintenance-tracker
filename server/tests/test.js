@@ -31,7 +31,7 @@ describe('POST endpoint for request', ()=>{
 		});
 	});
 
-    it('should not add a request with empty description ', (done)=>{
+    it('should not add a request with empty model ', (done)=>{
 		chai.request(app)
 		.post(api)
 		.send({userId:1,model:'', requestType: 'repair', requestDescription: 'fix'})
