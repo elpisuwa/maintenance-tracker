@@ -2,13 +2,11 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../app';
 
-
 const {expect} = chai;
 chai.use(chaiHttp);
 
-const api = '/api/v1/users/requests';
 describe('POST endpoint for request', ()=>{
-
+const api = '/api/v1/users/requests';
 	it('should not add a request with empty type ', (done)=>{
 		chai.request(app)
 		.post(api)
@@ -54,6 +52,21 @@ describe('POST endpoint for request', ()=>{
 			done();
 		});
 	});
+  });
 
+
+
+describe('GET all request endpoint', ()=>{
+ 
+  it('should return a 200', (done)=>{
+     chai.request(app)
+     .get('/api/v1/users/requests')
+     .end((error, response)=>{
+     	expect(response.status).to.equal(200);
+     	expect(response.body).to.be.an('object');
+     	
+     	done();
+     });
+  });
 
 });
