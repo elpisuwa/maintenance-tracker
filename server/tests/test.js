@@ -13,9 +13,22 @@ describe('PUT for requests', ()=>{
 		.end((error,response)=>{
 			expect(response.status).to.equal(200);
 			expect(response.body).to.be.an('object');
-			
-			done();
+		  done();
 		});
 	});
+  });
 
+
+
+describe('GET all request endpoint', ()=>{
+  
+  it('should return a 200', (done)=>{
+     chai.request(app)
+     .get('/api/v1/users/requests')
+     .end((error, response)=>{
+     	expect(response.status).to.equal(200);
+     	expect(response.body).to.be.an('object');
+     	done();
+     });
+  });
 });
