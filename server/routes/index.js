@@ -5,7 +5,11 @@ const routes =(app)=>{
 		res.status(200).json({message:'Welcome to Maintenance Tracker'});
 	});
 	
+
+	app.post('/api/v1/users/requests',requestController.postRequest);
+
 	app.get('/api/v1/users/requests/:requestId', requestController.viewRequest);
+
 
 
 	app.get('/api/v1/users/requests',requestController.allRequest);
@@ -14,5 +18,6 @@ const routes =(app)=>{
 	
 
 }
+
 
 export default routes;
