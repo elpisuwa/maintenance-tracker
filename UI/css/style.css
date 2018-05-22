@@ -359,6 +359,13 @@ order:3;
   width: 50px;
   height: 50px;
 }
+.header__logo-text{
+  position: absolute;
+  left: 80px;
+  top: 10px;
+  
+
+}
 
 input[input=text]{
   width:100%;
@@ -391,14 +398,10 @@ font-size: 50px;
   border-radius: 1em;
   width: 150px;
   height: 150px;
-  -webkit-filter: grayscale(100%); 
-    filter: grayscale(100%);
+  -webkit-filter: grayscale(10%); 
+    filter: grayscale(10%);
 }
-.about-icon img:hover{
-  -webkit-filter: grayscale(0%); 
-    filter: grayscale(0%);
 
-}
 @media screen and (max-width: 768px){
   .about-icon img{
   width: 200px;
@@ -648,8 +651,8 @@ input[type=text], input[type=password], input[type=email], .user-select, textare
   display: block;
   z-index: 0;
   width: 100%;
-  height:400px;
-  background-image: url('../img/home.jpg');
+  height:150px;
+  background-color: white;
   background-size: cover;
 }
 .reqdetails li:first-child{
@@ -690,13 +693,13 @@ font-weight: bold;
   .admin-main{
   position: relative;
 
-  padding-left: 200px;
+  padding-left: 20px;
   color: #f5f5f5;
   z-index: 0;
 }
 @media (max-width: 768px){
  .admin-main{
-  padding-left: 60px;
+  padding-left: 5px;
  }
 
 }
@@ -762,6 +765,14 @@ font-weight: bold;
     width: 80%;
 }
 .filter{
+
+}
+.action-select{
+  margin: 2px 0px 0px 10px;
+    color: #555;
+    border: 1px solid #AAA;
+    padding: 5px 5px;
+    width: 80%;
 
 }
 @media (max-width: 768px){
