@@ -27,8 +27,17 @@ class RequestController{
 
 	static updateRequest(request,response){
 		const {requestType,requestDescription} = request.body;
+		const findRequestId = data.findIndex((userRequest)=>
+			userRequest.id === parseInt(request.params.requestId, 10)
+		);
+		
+		data[findRequestId].requestType = request.body.requestType;
+		data[findRequestId].requestDescription = request.body.requestDescription;
 
+		return response.status(200).json({message:'Request has been successfully updated', request: data[findRequestId]})
+	
 
+	}
 	static viewRequest(request,response){
 	
 		const findRequestId = data.findIndex((userRequest)=>
@@ -41,17 +50,7 @@ class RequestController{
 	}
 
 
-		const findRequestId = data.findIndex((userRequest)=>
-			userRequest.id === parseInt(request.params.requestId, 10)
-		);
 		
-		data[findRequestId].requestType = request.body.requestType;
-		data[findRequestId].requestDescription = request.body.requestDescription;
-
-		return response.status(200).json({message:'Request has been successfully updated', request: data[findRequestId]})
-	
-
-	}
 
 
 }
