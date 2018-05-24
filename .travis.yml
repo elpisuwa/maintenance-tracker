@@ -8,6 +8,11 @@ script:
   - npm test
 
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=cbf1cb4e050d8d1e3206fd43d085d24fb0facfa060111a7754bf0fc1df6df826
+
 
 after_success:
 - npm run coveralls
+- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

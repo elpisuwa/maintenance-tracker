@@ -2,7 +2,7 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../app';
 
-const {expect} = chai;
+const { expect } = chai;
 chai.use(chaiHttp);
 
 
@@ -14,7 +14,8 @@ const api = '/api/v1/users/requests';
 		.send({userId:1,model:'4runner', requestType: '', requestDescription: 'repair wheels'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
-			expect(response.body.message).to.equal('bad request');
+			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
+			expect(response.boody.error).to.equal('Bad Request');
 			done();
 		});
 	});
@@ -25,7 +26,8 @@ const api = '/api/v1/users/requests';
 		.send({userId:1,model:'4runner', requestType: 'repair', requestDescription: ''})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
-			expect(response.body.message).to.equal('bad request');
+			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
+			expect(response.boody.error).to.equal('Bad Request');
 			done();
 		});
 	});
@@ -36,7 +38,8 @@ const api = '/api/v1/users/requests';
 		.send({userId:1,model:'', requestType: 'repair', requestDescription: 'fix'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
-			expect(response.body.message).to.equal('bad request');
+			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
+			expect(response.boody.error).to.equal('Bad Request');
 			done();
 		});
 	});
