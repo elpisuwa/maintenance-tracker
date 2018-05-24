@@ -11,7 +11,7 @@ const api = '/api/v1/users/requests';
 	it('should not add a request with empty type ', (done)=>{
 		chai.request(app)
 		.post(api)
-		.send({userId:1,model:'4runner', requestType: '', requestDescription: 'repair wheels'})
+		.send({userId:1,item:'4runner', requestType: '', requestDescription: 'repair wheels'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
 			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
@@ -23,7 +23,7 @@ const api = '/api/v1/users/requests';
 	it('should not add a request with empty description ', (done)=>{
 		chai.request(app)
 		.post(api)
-		.send({userId:1,model:'4runner', requestType: 'repair', requestDescription: ''})
+		.send({userId:1,item:'4runner', requestType: 'repair', requestDescription: ''})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
 			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
@@ -32,10 +32,10 @@ const api = '/api/v1/users/requests';
 		});
 	});
 
-    it('should not add a request with empty model ', (done)=>{
+    it('should not add a request with empty item ', (done)=>{
 		chai.request(app)
 		.post(api)
-		.send({userId:1,model:'', requestType: 'repair', requestDescription: 'fix'})
+		.send({userId:1,item:'', requestType: 'repair', requestDescription: 'fix'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(400);
 			expect(response.body.message).to.equal('An Empty field found, Please fill up all fields');
@@ -47,7 +47,7 @@ const api = '/api/v1/users/requests';
 	it('should return 201 for a successful post request ', (done)=>{
 		chai.request(app)
 		.post(api)
-		.send({userId:1, model:'4runner', requestType: 'repair', requestDescription: 'fix windscreen'})
+		.send({userId:1, item:'4runner', requestType: 'repair', requestDescription: 'fix windscreen'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(201);
 			expect(response.body.message).to.equal('Request has been added successfully');
@@ -66,7 +66,7 @@ describe('PUT for requests', ()=>{
 	it('should return 200', (done)=>{
 		chai.request(app)
 		.put('/api/v1/users/requests/1')
-		.send({model:'volvo', requestType:'repair', requestDescription:'change brake pad'})
+		.send({item:'volvo', requestType:'repair', requestDescription:'change brake pad'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(200);
 			expect(response.body).to.be.an('object');
