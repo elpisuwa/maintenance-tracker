@@ -2,6 +2,7 @@ import requestController from '../controllers/requestController';
 
 const routes = (app) => { 
   app.get('/', (req, res)=>{
+    res.send('welcome to Maintenance Tracke!');
   });
 
   app.post('/api/v1/users/requests', requestController.postRequest);
