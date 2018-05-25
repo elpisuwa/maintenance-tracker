@@ -9,7 +9,7 @@
     "start": "nodemon --exec npm run babel-node -- ./server/app.js",
     "test": "mocha --compilers js:babel-register server/tests/*.js --exit",
     "lint-all": "eslint ./server/app.js /server/test/*",
-    "babel-node": "babel-node --presets=env",
+    "babel-node": "babel-node --presets=latest",
     "cover": "istanbul cover _mocha"
   },
   "repository": {
