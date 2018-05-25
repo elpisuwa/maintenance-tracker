@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-let port = process.env.port || 4000;
+let port = process.env.PORT || 4000;
 
 routes(app);
 
