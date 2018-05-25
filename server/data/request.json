@@ -1,8 +1,8 @@
 [
 
-        {"id":1,"userId":1,"item":"Nissan123", "requestType":"repair", "requestDescription" : "broken side mirror"},
-        {"id":2,"userId":3,"item":"Toyota123", "requestType":"maintenance", "requestDescription":"brake pad"},
-        {"id":3, "userId":2, "item":"Honda123", "requestType":"repair", "requestDescription":"gear system is stiff"}
+        {"id":1,"userId":1,"item":"Chair", "requestType":"repair", "requestDescription" : "broken side", "status":"resolved"},
+        {"id":2,"userId":3,"item":"Table", "requestType":"maintenance", "requestDescription":"brpken leg","status":"pending"},
+        {"id":3, "userId":2, "item":"Fan", "requestType":"repair", "requestDescription":"gear is bad","status":"approve"}
         
 ]
 
