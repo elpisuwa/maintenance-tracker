@@ -15,7 +15,7 @@ const routes = (app) => {
   app.get('/api/v1/users/:userId/requests', requestController.userRequest);
   app.put('/api/v1/requests/:requestId/approve', requestController.approveRequest);
   app.put('/api/v1/requests/:requestId/disapprove', requestController.disapproveRequest);
-  app.put('/api/v1/requests/:requestId/resolved', requestController.resolveRequest);
+  app.put('/api/v1/requests/:requestId/resolve', requestController.resolveRequest);
 }
 
 export default routes;

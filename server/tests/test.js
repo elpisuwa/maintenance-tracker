@@ -61,16 +61,16 @@ const api = '/api/v1/users/requests';
 
 
 
-
+//modify request
 describe('PUT for requests', ()=>{
 	it('should return 200', (done)=>{
 		chai.request(app)
-		.put('/api/v1/users/requests/1')
+		.put('/api/v1/users/requests/2')
 		.send({item:'volvo', requestType:'repair', requestDescription:'change brake pad'})
 		.end((error,response)=>{
 			expect(response.status).to.equal(200);
 			expect(response.body).to.be.an('object');
-		  done();
+		    done();
 		});
 	});
   });
@@ -101,3 +101,101 @@ describe('GET all request endpoint', ()=>{
   });
 
 });
+//test endpoint for approving request
+describe('PUT to approve request', ()=>{
+	it('should return a 201', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/approve')
+		.send({status:'pending'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(201);
+			expect(response.body).to.be.an('object');
+			expect(response.body.message).to.equal('Request has been Approved');
+			done();
+		});
+	});
+
+	it('should return a 400', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/approve')
+		.send({status:''})
+		.end((error, response)=>{
+			expect(response.status).to.equal(400);
+			expect(response.body.message).to.equal('Invalid entry, Ensure you entered: pending');
+			done();
+		});
+	});
+
+	it('should return a 400', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/approve')
+		.send({status:'wrong'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(400);
+			expect(response.body.message).to.equal('Invalid entry, Ensure you entered: pending');
+			done();
+		});
+	});
+});
+//test endpoint for disapproving request
+describe('PUT to disapprove a request', ()=>{
+	it('should return a 201', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/disapprove')
+		.send({status:'disapprove'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(201);
+			expect(response.body).to.be.an('object');
+			expect(response.body.message).to.equal('Request has been Disapproved');
+			done();
+		});
+	});
+
+	it('should return a 400', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/disapprove')
+		.send({status:''})
+		.end((error, response)=>{
+			expect(response.status).to.equal(400);
+			expect(response.body.message).to.equal('Invalid entry, Ensure you entered: disapprove');
+			done();
+		});
+	});
+
+	it('should return a 400', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/1/disapprove')
+		.send({status:'wrong'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(400);
+			expect(response.body.message).to.equal('Invalid entry, Ensure you entered: disapprove');
+			done();
+		});
+	});
+});
+//test endpoint for resolving request
+describe('PUT to resolve a request', ()=>{
+	it('should return a 201 for pending status', (done)=>{
+		chai.request(app)
+		.put('/api/v1/requests/2/resolve')
+		.send({status:'resolve'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(201);
+			expect(response.body).to.be.an('object');
+			expect(response.body.message).to.equal('Request has been Resolved');
+			done();
+		});
+	});
+
+	it('should return a 400 for unpending status', (done)=>{ //the status must be pending 
+		chai.request(app)
+		.put('/api/v1/requests/1/resolve')
+		.send({status:'wrong'})
+		.end((error, response)=>{
+			expect(response.status).to.equal(400);
+			expect(response.body.message).to.equal('Invalid entry, Ensure you entered: resolve');
+			done();
+		});
+	});
+});
+	
