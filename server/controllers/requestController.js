@@ -26,6 +26,7 @@ class RequestController {
     return response.status(200).json({ data });
   }
 
+
   static userRequest(request, response) {
     const newData = data.filter((userRequest) =>
       userRequest.userId==parseInt(request.params.userId, 10)
@@ -40,9 +41,11 @@ class RequestController {
     const findId = data.findIndex(( userRequest )=>
       userRequest.id == parseInt(request.params.requestId, 10)
     );
-
+    if (request.body.status === 'pending') {
     data[findId].status =  request.body.status;
-    return response.status(201).json({message: 'Request has been Approved', request: data[findId] })
+    return response.status(201).json({message: 'Request has been Approved', request: data[findId] });
+    }
+    return response.status(400).json({message: 'Invalid entry, Ensure you entered: pending' })
   }
 
   static disapproveRequest(request, response) {
@@ -51,9 +54,11 @@ class RequestController {
     const findId = data.findIndex(( userRequest )=>
       userRequest.id == parseInt(request.params.requestId, 10)
     );
-
+    if (request.body.status === 'disapprove'){
     data[findId].status =  request.body.status;
-    return response.status(201).json({message: 'Request has been Disapproved', request: data[findId] })
+    return response.status(201).json({message: 'Request has been Disapproved', request: data[findId] });
+    }
+    return response.status(400).json({message: 'Invalid entry, Ensure you entered: disapprove'});
   }
 
   static resolveRequest(request, response) {
@@ -62,11 +67,12 @@ class RequestController {
     const findId = data.findIndex(( userRequest )=>
       userRequest.id == parseInt(request.params.requestId, 10)
     );
-
+    if (request.body.status ==='resolve' && data[findId].status === 'pending'){ //only pending request can be updated to resolve
     data[findId].status =  request.body.status;
-    return response.status(201).json({message: 'Request has been Resolved', request: data[findId] })
-  }
-  
+    return response.status(201).json({message: 'Request has been Resolved', request: data[findId] });
+    }
+    return response.status(400).json({message: 'Invalid entry, Ensure you entered: resolve'});
+  } 
   
 
   static updateRequest(request, response) {
@@ -76,7 +82,10 @@ class RequestController {
     );
     data[findRequestId].requestType = request.body.requestType;
     data[findRequestId].requestDescription = request.body.requestDescription;
-    return response.status(200).json({message:'Request has been successfully updated', request: data[findRequestId]})
+    if(data[findRequestId].status ==='pending'){
+      return response.status(200).json({message:'Request has been successfully updated', request: data[findRequestId]})
+    }
+      return response.status(400).json({message: 'Request can not be updated yet, until Approved'})
   }
   static viewRequest(request,response){
     const findRequestId = data.findIndex((userRequest)=>
