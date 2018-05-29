@@ -1,3 +1,4 @@
-import userRequest from './request.json';
+import requestData from './request.json';
+import userData from './user.json';
 
-export default userRequest;
+export { requestData, userData };
