@@ -1,9 +1,0 @@
-[
-
-        {"id":1,"userId":1,"item":"Chair", "requestType":"repair", "requestDescription" : "broken side", "status":"resolved"},
-        {"id":2,"userId":3,"item":"Table", "requestType":"maintenance", "requestDescription":"brpken leg","status":"pending"},
-        {"id":3, "userId":2, "item":"Fan", "requestType":"repair", "requestDescription":"gear is bad","status":"pending"}
-        
-]
-
-
