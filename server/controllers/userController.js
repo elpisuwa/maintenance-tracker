@@ -1,7 +1,8 @@
 import bcrypt from 'bcryptjs';
-import config from '../../config';
 import jwt from 'jsonwebtoken';
+import config from '../../config';
 import pool from '../models/database';
+
 
 
 class userController {
@@ -13,6 +14,7 @@ class userController {
     const username = request.body.username;
     const email = request.body.email;
     const password = request.body.password;
+    const role = 'user';
 
     request.checkBody('username', 'Username is required').notEmpty();
     request.checkBody('email', 'Email is required').notEmpty();
@@ -24,8 +26,8 @@ class userController {
       response.json({ errors: errors });
     } else {
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
-      const qry = 'INSERT INTO users (username,email,password) VALUES ($1, $2, $3) returning *';
-      const values = [username, email, hashedPassword];
+      const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
+      const values = [username, email, hashedPassword, role];
       pool.connect((err, client, done) => {
         if (err) {
           console.log(`not able to get connection ${err}`);
@@ -36,12 +38,51 @@ class userController {
             const token = jwt.sign({ id: result.rows[0].id }, config.secret, { // add the secret here
               expiresIn: 86400 // expires in 24 hours
             });
-            response.status(200).json({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
+            response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
 
           })
           .catch(next);
       });
     }
+
+  }
+
+  static createAdmin(request, response, next) {
+   
+   const username = request.body.username;
+    const email = request.body.email;
+    const password = request.body.password;
+    const role = 'admin';
+
+    request.checkBody('username', 'Username is required').notEmpty();
+    request.checkBody('email', 'Email is required').notEmpty();
+    request.checkBody('email', 'Email is Invalid').isEmail();
+    request.checkBody('password', 'password is required').notEmpty();
+
+    const errors = request.validationErrors();
+    if (errors) {
+      response.json({ errors: errors });
+    } else {
+      const hashedPassword = bcrypt.hashSync(request.body.password, 8);
+      const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
+      const values = [username, email, hashedPassword, role];
+      pool.connect((err, client, done) => {
+        if (err) {
+          console.log(`not able to get connection ${err}`);
+          response.status(400).send(err);
+        }
+        client.query(qry, values)
+          .then((result) => {
+            const token = jwt.sign({ id: result.rows[0].id }, config.secret, { // add the secret here
+              expiresIn: 86400 // expires in 24 hours
+            });
+            response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
+
+          })
+          .catch(next);
+      });
+    }
+
 
   }
   
@@ -67,6 +108,7 @@ class userController {
       }
       client.query(qry)
         .then((result) => {
+          console.log(request);
           console.log(result.rows[0].password);
 
           const passwordIsValid = bcrypt.compareSync(request.body.password, result.rows[0].password);
@@ -84,6 +126,30 @@ class userController {
 
   }
 
+
+static user(request, response, next) {
+  const qry = `SELECT * users WHERE id= '${request.userId}'`;
+  pool.connect((err, client, done) => {
+      if (err) {
+        console.log(`not able to get connection ${err}`);
+        response.status(400).send(err);
+      }
+      client.query(qry)
+        .then((result) => {
+          if (!result) return res.status(500).send("There was a problem finding the user.");
+    //if (!user) return res.status(404).send("No user found.");
+      res.status(200).send(result);
+ 
+  }).catch(next);
+
+
+});
+
+}
+
+static logout(request, response) {
+    res.status(200).send({ auth: false, token: null });
+  }
 }
 
 export default userController;
