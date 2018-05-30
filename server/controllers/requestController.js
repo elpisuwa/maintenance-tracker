@@ -80,16 +80,29 @@ class RequestController {
 
 
 
-  static disapproveRequest(request, response) {
+  static disapproveRequest(request, response, next) {
     const { status } = request.body;
+    if (status !== '' && status === 'disapprove') {
+      const addStatus = 'disapprove';
+      const requestId = request.params.requestId;
+      const qry = `UPDATE requests SET status = '${addStatus}' WHERE requests.id = '${requestId}' RETURNING * `;
+      pool.connect((err, client, done) => {
+        if (err) {
+          console.log(`not able to get connection ${err}`);
+          response.status(400).send(err);
+        }
+        client.query(qry)
+          .then((result) => {
+            if (result.rows.length==0) {
+              response.status(400).json({ message: 'This request does not exist' });
+            } else {
+              response.status(201).json({ message: 'Request has been Disapproved', request: result.rows });
+            }
+          })
+          .catch(next)
 
-    const findId = data.findIndex(userRequest =>
-      userRequest.id == parseInt(request.params.requestId, 10));
-    if (request.body.status === 'disapprove') {
-      data[findId].status = request.body.status;
-      return response.status(201).json({ message: 'Request has been Disapproved', request: data[findId] });
-    }
-    return response.status(400).json({ message: 'Invalid entry, Ensure you entered: disapprove' });
+      });
+    } else { return response.status(400).json({ message: 'Invalid entry, Ensure you enter: disapprove' }) }
   }
 
   static resolveRequest(request, response) {
