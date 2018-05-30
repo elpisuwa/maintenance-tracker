@@ -124,7 +124,7 @@ class RequestController {
               response.status(201).json({ message: 'Request has been Resolved', request: result.rows });
             }
           })
-          .catch(next)
+          .catch(next);
 
       });
     } else { return response.status(400).json({ message: 'Invalid entry, Ensure you enter: resolve' }) }
