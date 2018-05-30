@@ -6,7 +6,7 @@ const routes = (app) => {
     res.send('welcome to Maintenance Tracke!');
   });
   app.post('/api/v1/users/requests', requestController.postRequest);
-
+  app.get('/api/v1/requests', requestController.allRequest);
   app.get('/api/v1/users/requests/:requestId', requestController.viewRequest);
 
   app.get('/api/v1/users/requests', requestController.allRequest);
