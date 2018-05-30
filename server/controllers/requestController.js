@@ -107,14 +107,27 @@ class RequestController {
 
   static resolveRequest(request, response) {
     const { status } = request.body;
+    if (status !== '' && status === 'resolve') {
+      const addStatus = 'resolve';
+      const requestId = request.params.requestId;
+      const qry = `UPDATE requests SET status = '${addStatus}' WHERE requests.id = '${requestId}' RETURNING * `;
+      pool.connect((err, client, done) => {
+        if (err) {
+          console.log(`not able to get connection ${err}`);
+          response.status(400).send(err);
+        }
+        client.query(qry)
+          .then((result) => {
+            if (result.rows.length==0) {
+              response.status(400).json({ message: 'This request does not exist' });
+            } else {
+              response.status(201).json({ message: 'Request has been Resolved', request: result.rows });
+            }
+          })
+          .catch(next)
 
-    const findId = data.findIndex(userRequest =>
-      userRequest.id == parseInt(request.params.requestId, 10));
-    if (request.body.status === 'resolve' && data[findId].status === 'pending') { // only pending request can be updated to resolve
-      data[findId].status = request.body.status;
-      return response.status(201).json({ message: 'Request has been Resolved', request: data[findId] });
-    }
-    return response.status(400).json({ message: 'Invalid entry, Ensure you entered: resolve' });
+      });
+    } else { return response.status(400).json({ message: 'Invalid entry, Ensure you enter: resolve' }) }
   }
 
 
