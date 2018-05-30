@@ -9,7 +9,7 @@ class RequestController {
       userId, item, requestType, requestDescription
     } = request.body;
     const status = '';
-    const id =1;
+    //const id =1; fix needs an id to post
     if (userId !== '' && item !== '' && requestType !== '' && requestDescription !== '') {
       const qry = 'INSERT INTO requests (user_id,item,request_type,request_description,status) VALUES($1, $2, $3, $4, $5) RETURNING * ';
       const values = [userId, item, requestType, requestDescription, status];
@@ -31,13 +31,18 @@ class RequestController {
 
   static allRequest(request, response, next) {
 
-  // const qry = `SELECT COUNT(*) FROM requests Where userId ='${}';`;
+  const qry = `SELECT * FROM requests`;
+  pool.connect((err, client, done) => {
+        if (err) {
+          console.log(`not able to get connection ${err}`);
+          response.status(400).send(err);
+        }
+        client.query(qry)
+          .then(result => response.status(200).json({ requests: result }))
+          .catch(next)
 
-
-
-    return response.status(200).json({ data });
-  }
-
+  });
+}
 
   static userRequest(request, response) {
     const newData = data.filter(userRequest =>
