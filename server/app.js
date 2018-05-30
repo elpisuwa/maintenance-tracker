@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 
 
-let port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 routes(app);
 
