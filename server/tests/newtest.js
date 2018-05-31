@@ -146,16 +146,16 @@ describe('POST endpoint for a login', () => {
       });
   });
 
-  it('should return an 404', (done) => {
-    chai.request(app)
-      .post('/auth/login')
-      .send({ email: 'uwa@uwa.com', password: 'password' })
-      .end((error, response) => {
-        expect(response.status).to.equal(200);
-        // (response.body).to.be.an('object');
-        done();
-      });
-  });
+//   it('should return an 404', (done) => {
+//     chai.request(app)
+//       .post('/auth/login')
+//       .send({ email: 'uwa@uwa.com', password: 'password' })
+//       .end((error, response) => {
+//         expect(response.status).to.equal(200);
+//         // (response.body).to.be.an('object');
+//         done();
+//       });
+//   });
 });
 
 
