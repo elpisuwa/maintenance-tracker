@@ -32,23 +32,18 @@ class userController {
         if (err) {
           console.log(`not able to get connection ${err}`);
           response.status(400).send(err);
-        } else {
-          client.query(findEmail)
-            .then((result) => {
-              if (result.rows.length == 0) {
-                client.query(qry, values)
-                  .then((result) => {
-                    const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
-                      expiresIn: 86400 // expires in 24 hours
-                    });
-                    response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
-
-                  })
-                  .catch(next);
-              }
-            })
-
         }
+
+          client.query(qry, values)
+            .then((result) => {
+              const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
+                expiresIn: 86400 // expires in 24 hours
+              });
+              response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
+
+            })
+            .catch(next);
+
       });
     }
 
