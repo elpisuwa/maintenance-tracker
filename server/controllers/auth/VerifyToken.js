@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from '../../../config';
+//import config from '../../../config';
 
 function verifyToken(request, response, next) {
   const token = request.headers['x-access-token'];
