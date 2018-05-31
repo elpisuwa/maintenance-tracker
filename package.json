@@ -1,15 +1,14 @@
 {
   "name": "maintenance-tracker",
   "version": "1.0.0",
-  "node":"8.9.4",
-
+  "node": "8.9.4",
   "description": "A web app that helps users make request for repairs and maintenance",
   "main": "./server/app.js",
   "scripts": {
-    "start": "npm run babel-node -- ./server/app.js",
+    "start": "nodemon --exec npm run babel-node -- ./server/app.js",
     "test": "mocha --compilers js:babel-register server/tests/*.js --exit",
     "lint-all": "eslint ./server/app.js /server/test/*",
-    "babel-node": "babel-node --presets=latest",
+    "babel-node": "babel-node --presets=env",
     "cover": "istanbul cover _mocha"
   },
   "repository": {
@@ -41,12 +40,16 @@
   "dependencies": {
     "babel": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai-http": "^4.0.0",
     "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "jsonwebtoken": "^8.2.1",
     "method-override": "^2.3.10",
     "morgan": "^1.9.0",
-    "pg": "^6.1.0"
+    "pg": "^6.4.2"
   }
 }
