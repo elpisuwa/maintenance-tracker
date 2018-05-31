@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon --exec npm run babel-node -- ./server/app.js",
     "startProduction": "npm run babel-node -- ./server/app.js",
-    "test": "mocha --compilers js:babel-register server/tests/*.js --exit",
+    "test": "mocha --compilers js:babel-register server/tests/*index.test.js --exit",
     "lint-all": "eslint ./server/app.js /server/test/*",
     "babel-node": "babel-node --presets=env",
     "cover": "istanbul cover _mocha"
@@ -24,7 +24,6 @@
   "homepage": "https://github.com/uwahope007/maintenance-tracker#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.3",
-    
     "chai": "^4.1.2",
     "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
@@ -37,9 +36,9 @@
     "nodemon": "^1.17.4"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.24.1",
     "bcryptjs": "^2.4.3",
