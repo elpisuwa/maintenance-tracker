@@ -8,6 +8,7 @@ function verifyToken(request, response, next) {
     if (err) { return response.status(500).send({ auth: false, message: 'Failed to authenticate token.' }); }
     
     request.userId = decoded.id;
+    request.role = decoded.role;
     next();
   });
 }
