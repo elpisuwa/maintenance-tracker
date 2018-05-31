@@ -5,7 +5,8 @@
   "description": "A web app that helps users make request for repairs and maintenance",
   "main": "./server/app.js",
   "scripts": {
-    "start": "npm run babel-node -- ./server/app.js",
+    "start": "nodemon --exec npm run babel-node -- ./server/app.js",
+    "startProduction": "npm run babel-node -- ./server/app.js",
     "test": "mocha --compilers js:babel-register server/tests/*.js --exit",
     "lint-all": "eslint ./server/app.js /server/test/*",
     "babel-node": "babel-node --presets=env",
