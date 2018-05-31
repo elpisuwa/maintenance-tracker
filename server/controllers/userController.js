@@ -75,7 +75,7 @@ class userController {
         }
         client.query(qry, values)
           .then((result) => {
-            const token = jwt.sign({ id: result.rows[0].id }, config.secret, { // add the secret here
+            const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
               expiresIn: 86400 // expires in 24 hours
             });
             response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
@@ -117,7 +117,7 @@ class userController {
           if (!passwordIsValid) return response.status(401).send({ auth: false, token: null });
 
 
-          const token = jwt.sign({ id: result.rows[0].id }, config.secret, {
+          const token = jwt.sign({ id: result.rows[0].id }, 'secret', {
             expiresIn: 86400 // expires in 24 hours
           });
           response.status(200).send({ auth: true, token: token });

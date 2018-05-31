@@ -92,7 +92,7 @@ describe('PUT endpoint for a disapprove', () => {
       .put('/api/v1/requests/1/disapprove')
       .send({ requestDescription: 'lorem lorem lorem' })
       .end((error, response) => {
-        expect(response.status).to.equal(200);
+        expect(response.status).to.equal(403);
         // (response.body).to.be.an('object');
         done();
       });
