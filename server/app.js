@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import expressValidator  from 'express-validator'
+import expressValidator from 'express-validator'
 import routes from './routes';
 
 
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 
 
-let port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 routes(app);
 
