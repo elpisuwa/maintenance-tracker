@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-//import config from '../../config';
 import pool from '../models/database';
 
 
@@ -25,6 +24,7 @@ class userController {
     if (errors) {
       response.json({ errors: errors });
     } else {
+      const findEmail = `SELECT from users WHERE email= '${email}'`;
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
       const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
       const values = [username, email, hashedPassword, role];
@@ -32,24 +32,31 @@ class userController {
         if (err) {
           console.log(`not able to get connection ${err}`);
           response.status(400).send(err);
-        }
-        client.query(qry, values)
-          .then((result) => {
-            const token = jwt.sign({ id: result.rows[0].id }, config.secret, { // add the secret here
-              expiresIn: 86400 // expires in 24 hours
-            });
-            response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
+        } else {
+          client.query(findEmail)
+            .then((result) => {
+              if (result.rows.length == 0) {
+                client.query(qry, values)
+                  .then((result) => {
+                    const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
+                      expiresIn: 86400 // expires in 24 hours
+                    });
+                    response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
 
-          })
-          .catch(next);
+                  })
+                  .catch(next);
+              }
+            })
+
+        }
       });
     }
 
   }
 
   static createAdmin(request, response, next) {
-   
-   const username = request.body.username;
+
+    const username = request.body.username;
     const email = request.body.email;
     const password = request.body.password;
     const role = 'admin';
@@ -85,7 +92,7 @@ class userController {
 
 
   }
-  
+
 
   static loginRequest(request, response, next) {
 
@@ -127,27 +134,27 @@ class userController {
   }
 
 
-static user(request, response, next) {
-  const qry = `SELECT * users WHERE id= '${request.userId}'`;
-  pool.connect((err, client, done) => {
+  static user(request, response, next) {
+    const qry = `SELECT * users WHERE id= '${request.userId}'`;
+    pool.connect((err, client, done) => {
       if (err) {
         console.log(`not able to get connection ${err}`);
         response.status(400).send(err);
       }
       client.query(qry)
         .then((result) => {
-          if (!result) return res.status(500).send("There was a problem finding the user.");
-    //if (!user) return res.status(404).send("No user found.");
-      res.status(200).send(result);
- 
-  }).catch(next);
+          if (!result) return res.status(500).send('There was a problem finding the user.');
+          // if (!user) return res.status(404).send("No user found.");
+          res.status(200).send(result);
+
+        }).catch(next);
 
 
-});
+    });
 
-}
+  }
 
-static logout(request, response) {
+  static logout(request, response) {
     res.status(200).send({ auth: false, token: null });
   }
 }
