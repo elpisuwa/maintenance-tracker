@@ -22,7 +22,7 @@ class userController {
 
     const errors = request.validationErrors();
     if (errors) {
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     } else {
       const findEmail = `SELECT from users WHERE email= '${email}'`;
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
@@ -63,7 +63,7 @@ class userController {
 
     const errors = request.validationErrors();
     if (errors) {
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     } else {
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
       const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
