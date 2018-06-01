@@ -11,7 +11,7 @@ const routes = (app) => {
   app.get('/api/v1/requests', VerifyToken, requestController.allRequest);
   app.get('/api/v1/users/requests/:requestId', VerifyToken, requestController.viewRequest);
   app.get('/api/v1/users/requests', VerifyToken, requestController.userRequest);
-  app.get('/api/v1/requests', VerifyToken, requestController.allRequest);
+ //app.get('/api/v1/requests', VerifyToken, requestController.allRequest);
   app.put('/api/v1/users/requests/:requestId', VerifyToken, requestController.updateRequest);
   app.put('/api/v1/requests/:requestId/approve', VerifyToken, requestController.approveRequest);
   app.put('/api/v1/requests/:requestId/disapprove', VerifyToken, requestController.disapproveRequest);

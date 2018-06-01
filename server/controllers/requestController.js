@@ -102,7 +102,7 @@ class RequestController {
   // /api/v1/requests
   static allRequest(request, response) {
     const admin = request.role;
-    if (admin === 'admin') {
+    
       const qry = 'SELECT * FROM requests';
       pool.connect((err, client) => {
         if (err) {
@@ -114,7 +114,7 @@ class RequestController {
           .catch()
 
       });
-    }
+    
     return response.status(401).json({ message: 'Ooops! You are not an Admin, therfore you can not view all requests' })
   }
 
@@ -124,9 +124,9 @@ class RequestController {
   static approveRequest(request, response) {
     // rewrite this logic, check if it is null first then and exist before Updating
     // const findQuery = `SELECT from requests WHERE requests.id ='${request.param.requestId}'`;
-    const admin = request.role;
+    //const admin = request.role;
 
-    if (admin === 'admin') {
+    
       const addStatus = 'pending';
       const requestId = request.params.requestId;
       const qry = `UPDATE requests SET status = '${addStatus}' WHERE requests.id = '${requestId}' RETURNING * `;
@@ -146,7 +146,7 @@ class RequestController {
           .catch()
 
       });
-    } else { return response.status(401).json({ message: 'Ooops! You can not perform this operation' }) }
+    
 
   }
 
@@ -155,7 +155,7 @@ class RequestController {
   static disapproveRequest(request, response) {
     const admin = request.role;
 
-    if (admin === 'admin') {
+    
       const addStatus = 'disapprove';
       const requestId = request.params.requestId;
       const findStatus = `SELECT * FROM requests WHERE id = '${requestId}'`;
@@ -184,7 +184,7 @@ class RequestController {
 
 
       });
-    } else { return response.status(401).json({ message: 'Ooops! You can not perform this operation' }) }
+    
 
   }
 
@@ -192,7 +192,7 @@ class RequestController {
   static resolveRequest(request, response) {
     const admin = request.role;
 
-    if (admin === 'admin') {
+    
       const addStatus = 'resolved';
       const requestId = request.params.requestId;
       const findStatus = `SELECT * FROM requests WHERE id = '${requestId}'`;
@@ -220,7 +220,7 @@ class RequestController {
 
 
       });
-    } else { return response.status(401).json({ message: 'Ooops! You can not perform this operation' }) }
+    
 
   }
 
