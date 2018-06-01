@@ -116,8 +116,9 @@ class userController {
           const passwordIsValid = bcrypt.compareSync(request.body.password, result.rows[0].password);
           if (!passwordIsValid) return response.status(401).send({ auth: false, token: null });
 
-
-          const token = jwt.sign({ id: result.rows[0].id }, 'secret', {
+          const thechange={
+            result.rows[0].id
+          const token = jwt.sign(thechange, 'secret', {
             expiresIn: 86400 // expires in 24 hours
           });
           response.status(200).send({ auth: true, token: token });
