@@ -56,7 +56,7 @@ a{
  color: inherit;
 }
 a:hover{
- color: green;
+ color: inherit;
 }
 
 
@@ -155,6 +155,9 @@ tr:nth-child(even){background-color: #f2f2f2}
 }
 .cancel-text{
   color: red;
+}
+.approve-text{
+  color: blue;
 }
 .ptop-1{
   padding-top: 1em;
@@ -784,4 +787,9 @@ font-weight: bold;
 .status-icon {
     font-size: 30px;
     margin: 0px 3px 0px 3px;
+}
+
+.hover-effect:hover{
+  background color: black!important;
+  
 }

@@ -22,7 +22,7 @@
       </div></div>
       <a href="index.html"><img class="header__logo" src="img/logo.png"></a>
       <div class="header__logo-text">
-      <h2>Maintenance Tracker</h2>
+      <h2 class="md-show-only">Maintenance Tracker</h2>
     </div>
     </header>
 
@@ -47,18 +47,8 @@
       <div class="container">
       <div class="row">
         
-          <div class="col3 col-s filter">
-            <form class="filter-form">
-          <h3 class="black-text mtop-0">By User</h3>
-            <select class="filter-select">
-              <option>Filter Table</option>
-              <option>Ade</option>
-              <option>Bola</option>
-              <option>Camara</option>
-            </select>
-            </form>
-          </div>
-          <div class="col3 col-s filter">
+          
+          <div class="col4 col-s filter">
             <form class="filter-form">
            <h3 class="black-text mtop-0">By Request Type</h3>
             <select class="filter-select">
@@ -69,7 +59,7 @@
             </select>
             </form>
           </div>
-          <div class="col3 col-s filter">
+          <div class="col4 col-s filter">
             <form class="filter-form">
               <h3 class="black-text mtop-0">Request Status</h3>
             <select class="filter-select">
@@ -80,11 +70,12 @@
             </select>
             </form>
           </div>
-          <div class="col3 col-s">
+          <div class="col4 col-s">
             <ul class="black-text">
-              <li><i class="myh5 success-text fa fa-calendar-check-o"></i> -Resolved</li>
-              <li><i class="myh5 success-text fa fa-check"></i> -Approved</li>
-              <li><i class="myh5 cancel-text fa fa-close"></i> -Declined</li>
+              <li><i class="myh5 success-text fa fa-calendar-check-o"></i><b> -Resolved</b></li>
+              <li><i class="myh5 success-text fa fa-check"></i><strong> -Approved</strong></li>
+              <li><i class="myh5 cancel-text fa fa-close"></i><strong> -Declined</strong></li>
+              <li> <i class="myh5 fa fa-question"></i><strong>- Awaiting Action </strong></li>
 
             </ul>
           </div>
@@ -96,52 +87,37 @@
   			
         <div class="table--request" >
           <table>
-            <tr>
+            <tr class="">
               <th>Date</th>
               <th>User</th>
               <th>Item</th>
               <th>Request Type</th>
               <th>Description</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th> View More</th>
               
               
             </tr>
-            <tr>
+
+            <tr class="hover-effect">
               <td>21-21-12</td>
               <td>Smith</td>
               <td>Chair</td>
               <td>Repair</td>
               <td>Broken rest</td>
               <td><i class="myh5 success-text fa fa-calendar-check-o"></i></td>
-              <td>
-                <select class="action-select">
-                  <option>Select Action</option>
-                  <option>Approve</option>
-                  <option>Decline</option>
-                  <option>Resolved</option>
-                </select>
-                  
-              </td>
-              
+              <td id="requestModal"><a><i class="myh5  fa fa-eye"></i></a></td>
               
             </tr>
-            <tr>
+            <tr class="hover-effect">
               <td>21-21-12</td>
               <td>Smith</td>
               <td>Table</td>
               <td>Repair</td>
               <td>Broken leg</td>
               <td><i class=" status-icon success-text fa fa-check"><a href=""></a></i></td>
-              <td>
-                  <select class="action-select">
-                  <option>Select Action</option>
-                  <option>Approve</option>
-                  <option>Decline</option>
-                  <option>Resolved</option>
-                </select>
-                  
-              </td>
+              <td id="requestModal"><a ><i class="myh5 fa fa-eye"></i></a></td>
+              
               
             </tr>
             <tr>
@@ -150,22 +126,49 @@
               <td>Fan</td>
               <td>Repair</td>
               <td>Fan noise</td>
-              <td><i class="status-icon  fa fa-close"></i></td>
-              <td>
-                <select class="action-select">
-                  <option>Select Action</option>
-                  <option>Approve</option>
-                  <option>Decline</option>
-                  <option>Resolved</option>
-                </select>
-                  
-                  
-              </td>
+              <td><i class="status-icon cancel-text  fa fa-close"></i></td>
+              <td id="requestModal"><a><i class="myh5 fa fa-eye"></i></a></td>
+              
+            </tr>
+            <tr>
+              <td>21-21-12</td>
+              <td>Smith</td>
+              <td>Fan</td>
+              <td>Repair</td>
+              <td>Fan noise</td>
+              <td><i class="status-icon  fa fa-question"></i></td>
+              <td id="requestModal"><a><i class="myh5 fa fa-eye"></i></a></td>
               
             </tr>
             
             
           </table>
+        </div>
+        <!----modal----->
+        <div id="myreqModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal__request-form row ">
+             
+              <div class="pleft-3 pright-3 ">
+              <h1>Request information</h1>
+              <div class="mbottom-3">
+                <h2 class="">Username:</h2><p>Smith</p>
+                <h2 class="">Item:</h2><p>Chair</p>
+                <h2 class="">Type:</h2><p>Request</p>
+                <h2 class="">Description:</h2><p></p>>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                </span>
+              </div>
+              </div>
+
+              
+            </form>
+          </div>
+          </div>
+
         </div>
   			
   			
@@ -181,5 +184,20 @@
 
   </body>
   <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+    var requestModal = document.getElementById('myreqModal');
+    var btn2 = document.getElementById("requestModal");
+    var span = document.getElementsByClassName("close")[0];
+    if (btn2!==""){
+    btn2.onclick = function() {
+        requestModal.style.display = "inline-block";
+    }               
+    span.onclick = function() {
+        requestModal.style.display = "none";
+    }}
+  }
+  </script>
+  
 
 </html>

@@ -14,7 +14,7 @@
   </style>
   <body>
   	<header class="bg__light-black" >
-      <span class="header__user" >Hi Uwa Hope</span>
+      <span class="header__user " >Hi Uwa Hope</span>
       <div class="header__sign-out white-text dropdown"><i class=" dropdown-btn fa fa-caret-down"></i>
       <div class="dropdown-content">
         <a href="index.html">Signout</a>
@@ -22,16 +22,18 @@
       </div></div>
       <a href="index.html"><img class="header__logo" src="img/logo.png"></a>
       <div class="header__logo-text">
-      <h2>Maintenance Tracker</h2>
+      <h2 class="md-show-only">Maintenance Tracker</h2>
+      <h2 class="sm-show-only">MT</h2>
     </div>
     </header>
 	  
   	<main class="mbottom-3" >
-  		<div class="banner"  >
+  		<div class="banner light-grey"  >
         
-        <button class="centered blue-btn-inv round-button button-lg" id="requestModal"><a href="admin-dashboard.html">Make a Request</a></button>
+        <button class="centered blue-btn-inv flat-button button-lg" id="requestModal"><a href="admin-dashboard.html">Make a Request</a></button>
         
       </div>
+
       <div id="myreqModal" class="modal">
 
           <!-- Modal content -->
@@ -67,91 +69,90 @@
         </div>
       
       <div class="req container pleft-3 pright-3 ptop-2">
-        <h1>Track Your Request</h1>
+        <h1>Track Your Request Here</h1>
         <div class="">
         <ol class="reqdetails">
           <li class="row">
-            <div class="md-show-only col3 col-s">Request</div>
-            <div class="md-show-only col3 col-s">Model</div>
-            <div class=" md-show-only col3 col-s">Nature of Request</div>
+            <div class="md-show-only col3 col-s">Item</div>
+            <div class="md-show-only col3 col-s">Type</div>
+            <div class=" md-show-only col3 col-s">Description</div>
             <div class="md-show-only col3 col-s ">Status</div>
           </li>
-          <li class="">
-            <div class="row">
+          <li Chair="">
+            <div clasChairw">
              <div class="col3 col-s">
-                <div class="md-show-only">Car battery</div>
-                <div class="sm-show-only">Request : Car battery</div> 
+                <div class="md-show-only">Table</div>
+                <div class="sm-show-only">Item : Table</div> 
                 <!-- <h5 class="md-show-only">Car battery</h5> -->
                 
               </div>
               <div class="col3 col-s">
-                <div class="md-show-only">Nissan</div>
-                <div class="sm-show-only">Model :  Nissan</div>
+                <div class="md-show-only">Repair</div>
+                <div class="sm-show-only">Type :  Repair</div>
+                
+              </div>
+              <div class="col3 col-s">
+                <div class="md-show-only">Broken legs</div>
+                <div class="sm-show-only">Description: Broken leg</div>
+                
+              </div>
+              <div class="col3 col-s " >
+                <div class="md-show-only">Pending</div>
+                <div class="sm-show-only cancel-text ">Status : Pending</div>
+              </div>
+            </div>
+            
+          </li>
+          <lFanss="">
+            <div class="row">
+             <div class="col3 col-s">
+                <div class="md-show-only">Chair</div>
+                <div class="sm-show-only">Item : Chair</div> 
+                <!-- <h5 class="md-show-only">Car battery</h5> -->
+                
+              </div>
+              <div class="col3 col-s">
+                <div class="md-show-only">Repair</div>
+                <div class="sm-show-only">Type :  Repair</div>
+                
+              </div>
+              <div class="col3 col-s">
+                <div class="md-show-only">Broken rest</div>
+                <div class="sm-show-only">Description: Broken rest</div>
+                
+              </div>
+              <div class="col3 col-s " >
+                <div class="md-show-only">None Yet</div>
+                <div class="sm-show-only cancel-text ">Status : None Yet</div>
+              </div>
+            </div>
+            
+          </li>
+          <li class="">
+            <div class="row">
+             <div class="col3 col-s">
+                <div class="md-show-only">Fan</div>
+                <div class="sm-show-only">Item : Table</div> 
+                <!-- <h5 class="md-show-only">Car battery</h5> -->
                 
               </div>
               <div class="col3 col-s">
                 <div class="md-show-only">Maintenance</div>
-                <div class="sm-show-only">Nature of Request: Maintenance</div>
+                <div class="sm-show-only">Type : Maintenance</div>
+                
+              </div>
+              <div class="col3 col-s">
+                <div class="md-show-only">Broken Heart</div>
+                <div class="sm-show-only">Description: Broken Heart</div>
                 
               </div>
               <div class="col3 col-s " >
-                <div class="md-show-only">Reject</div>
-                <div class="sm-show-only cancel-text ">Status : Reject</div>
+                <div clrest="md-show-only">Resolved</div>
+                <div class="sm-show-only cancel-text ">Status : Resolved</div>
               </div>
             </div>
             
-          </li>
-          <li class="">
-            <div class="row">
-             <div class="col3 col-s">
-                <div class="md-show-only">Car battery</div>
-                <div class="sm-show-only">Request : Car battery</div> 
-                <!-- <h5 class="md-show-only">Car battery</h5> -->
-                
-              </div>
-              <div class="col3 col-s">
-                <div class="md-show-only">Toyota</div>
-                <div class="sm-show-only">Model :  Toyota</div>
-                
-              </div>
-              <div class="col3 col-s">
-                <div class="md-show-only">Repair</div>
-                <div class="sm-show-only">Nature of Request: Repair</div>
-                
-              </div>
-              <div class="col3 col-s " >
-                <div class="md-show-only">Approve</div>
-                <div class="sm-show-only success-text ">Status : Approve</div>
-              </div>
-            </div>
-            
-          </li>
-          <li class="">
-            <div class="row">
-             <div class="col3 col-s">
-                <div class="md-show-only">Car battery</div>
-                <div class="sm-show-only">Request : Car battery</div> 
-                <!-- <h5 class="md-show-only">Car battery</h5> -->
-                
-              </div>
-              <div class="col3 col-s">
-                <div class="md-show-only">Honda</div>
-                <div class="sm-show-only">Model : Honda</div>
-                
-              </div>
-              <div class="col3 col-s">
-                <div class="md-show-only">Repair</div>
-                <div class="sm-show-only">Nature of Request: Repair</div>
-                
-              </div>
-              <div class="col3 col-s " >
-                <div class="md-show-only">Approve</div>
-                <div class="sm-show-only success-text ">Status : Approve</div>
-              </div>
-            </div>
-            
-          </li>
-          
+          </li>      
           
           
         </ol>
@@ -163,16 +164,16 @@
     <br>
     <br>
     <footer>
-      &copy; Cycle 32
+   Broken legsndela Cycle 32
     </footer>
     
 
   </body>
   <script type="text/javascript" src="js/script.js" defer></script>
   <script type="text/javascript">
-    window.onload = function(){
-    var requestModal = document.getElementById('myreqModal');
-    var btn2 = document.getElementById("requestModal");
+   Broken Heartoad = function(){
+    var requestModal = Heartument.getElementById('myreqModal');
+   Broken rest document.getElementById("requestModal");
     var span = document.getElementsByClassName("close")[0];
     if (btn2!==""){
     btn2.onclick = function() {
