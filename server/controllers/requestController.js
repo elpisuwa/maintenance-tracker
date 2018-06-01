@@ -24,7 +24,7 @@ class RequestController {
   // '/api/v1/users/requests/:requestId.
   static viewRequest(request, response) {
     const requestId = request.params.requestId;
-    if (Number.isInteger(requestId) === true) { 
+    if (requestId === parseInt(requestId, 10)) { 
       const qry = `SELECT * FROM requests WHERE id= '${requestId}'`
       pool.connect((err, client, done) => {
         if (err) {
