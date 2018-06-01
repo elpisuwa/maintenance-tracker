@@ -36,7 +36,7 @@ class userController {
 
         client.query(qry, values)
           .then((result) => {
-            const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
+            const token = jwt.sign({ id: result.rows[0].id }, { role: result.rows[0].role }, 'secret', { // add the secret here
               expiresIn: 86400 // expires in 24 hours
             });
             response.status(200).send({ auth: true, token: token, user: { id: result.rows[0].id, username: result.rows[0].username } });
@@ -68,7 +68,7 @@ class userController {
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
       const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
       const values = [username, email, hashedPassword, role];
-      pool.connect((err, client, done) => {
+      pool.connect((err, client) => {
         if (err) {
           console.log(`not able to get connection ${err}`);
           response.status(400).send(err);
@@ -99,11 +99,11 @@ class userController {
     const errors = request.validationErrors();
     if (errors) {
       console.log('There is an error');
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     }
     const qry = `SELECT id, username, email, password from users where username = '${username}';`;
 
-    pool.connect((err, client, done) => {
+    pool.connect((err, client) => {
       if (err) {
         console.log(`not able to get connection ${err}`);
         response.status(400).send(err);
@@ -117,7 +117,7 @@ class userController {
           if (!passwordIsValid) return response.status(401).send({ auth: false, token: null });
 
 
-          const token = jwt.sign({ id: result.rows[0].id }, 'secret', {
+          const token = jwt.sign({ id: result.rows[0].id }, { role: result.rows[0].role }, 'secret', {
             expiresIn: 86400 // expires in 24 hours
           });
           response.status(200).send({ auth: true, token: token });
