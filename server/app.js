@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
-import expressValidator  from 'express-validator'
+import expressValidator from 'express-validator'
 import routes from './routes';
 
 
