@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-//import config from '../../config';
 import pool from '../models/database';
 
 
@@ -23,8 +22,9 @@ class userController {
 
     const errors = request.validationErrors();
     if (errors) {
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     } else {
+      const findEmail = `SELECT from users WHERE email= '${email}'`;
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
       const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
       const values = [username, email, hashedPassword, role];
@@ -33,6 +33,7 @@ class userController {
           console.log(`not able to get connection ${err}`);
           response.status(400).send(err);
         }
+
         client.query(qry, values)
           .then((result) => {
             const token = jwt.sign({ id: result.rows[0].id }, 'secret', { // add the secret here
@@ -42,14 +43,15 @@ class userController {
 
           })
           .catch(next);
+
       });
     }
 
   }
 
   static createAdmin(request, response, next) {
-   
-   const username = request.body.username;
+
+    const username = request.body.username;
     const email = request.body.email;
     const password = request.body.password;
     const role = 'admin';
@@ -61,12 +63,12 @@ class userController {
 
     const errors = request.validationErrors();
     if (errors) {
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     } else {
       const hashedPassword = bcrypt.hashSync(request.body.password, 8);
       const qry = 'INSERT INTO users (username,email,password,role) VALUES ($1, $2, $3, $4) returning *';
       const values = [username, email, hashedPassword, role];
-      pool.connect((err, client, done) => {
+      pool.connect((err, client) => {
         if (err) {
           console.log(`not able to get connection ${err}`);
           response.status(400).send(err);
@@ -85,7 +87,7 @@ class userController {
 
 
   }
-  
+
 
   static loginRequest(request, response, next) {
 
@@ -97,11 +99,11 @@ class userController {
     const errors = request.validationErrors();
     if (errors) {
       console.log('There is an error');
-      response.json({ errors: errors });
+      response.json({ errors: errors.msg });
     }
     const qry = `SELECT id, username, email, password from users where username = '${username}';`;
 
-    pool.connect((err, client, done) => {
+    pool.connect((err, client) => {
       if (err) {
         console.log(`not able to get connection ${err}`);
         response.status(400).send(err);
@@ -114,8 +116,14 @@ class userController {
           const passwordIsValid = bcrypt.compareSync(request.body.password, result.rows[0].password);
           if (!passwordIsValid) return response.status(401).send({ auth: false, token: null });
 
+<<<<<<< HEAD
 
           const token = jwt.sign({ id: result.rows[0].id }, 'secret', {
+=======
+          const thechange={
+            result.rows[0].id
+          const token = jwt.sign(thechange, 'secret', {
+>>>>>>> 29e44a13b62a2268a3d0c16797b7a595582dd20c
             expiresIn: 86400 // expires in 24 hours
           });
           response.status(200).send({ auth: true, token: token });
@@ -127,27 +135,27 @@ class userController {
   }
 
 
-static user(request, response, next) {
-  const qry = `SELECT * users WHERE id= '${request.userId}'`;
-  pool.connect((err, client, done) => {
+  static user(request, response, next) {
+    const qry = `SELECT * users WHERE id= '${request.userId}'`;
+    pool.connect((err, client, done) => {
       if (err) {
         console.log(`not able to get connection ${err}`);
         response.status(400).send(err);
       }
       client.query(qry)
         .then((result) => {
-          if (!result) return res.status(500).send("There was a problem finding the user.");
-    //if (!user) return res.status(404).send("No user found.");
-      res.status(200).send(result);
- 
-  }).catch(next);
+          if (!result) return res.status(500).send('There was a problem finding the user.');
+          // if (!user) return res.status(404).send("No user found.");
+          res.status(200).send(result);
+
+        }).catch(next);
 
 
-});
+    });
 
-}
+  }
 
-static logout(request, response) {
+  static logout(request, response) {
     res.status(200).send({ auth: false, token: null });
   }
 }

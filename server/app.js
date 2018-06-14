@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import dotenv from 'dotenv'
+=======
+import 'dotenv/config';
+>>>>>>> 29e44a13b62a2268a3d0c16797b7a595582dd20c
 import express from 'express';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator'
